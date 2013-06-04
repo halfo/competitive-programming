@@ -1,6 +1,6 @@
-bool isPrime (long long n) {
-    if (n < 2) return false;
-    if (!(n & 1) && n != 2) return false;
-    for (long long i = 3; i * i <= n; i += 2) if (!(n % i)) return false;
+bool isPrime (int64 n) {
+    if (n < 2LL) return false;
+    if (!(n & 1LL) && n != 2LL) return false;
+    for (int64 i = 3LL; i * i * 1LL <= n; i += 2LL) if (!(n % i)) return false;
     return true;
 }

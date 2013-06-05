@@ -4,12 +4,6 @@ int sum [MAX_N], cnt [MAX_N], c [MAX_N], rank [22][MAX_N];
 
 inline bool cmp (const int &a, const int &b) { return str [a] < str [b]; }
 
-int lcp (int u, int v) {
-    int ret = 0;
-    for (int i = stp; i >= 1; --i) if (rank [i][u] == rank [i][v]) ret += 1 << i, u += 1 << i, v += 1 << i;
-    return ret;
-}
-
 bool isEqual (int u, int v) {
     if (!stp) return str [u] == str [v];
     if (rank [stp - 1][u] != rank [stp - 1][v]) return false;

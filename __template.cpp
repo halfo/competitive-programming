@@ -27,9 +27,12 @@ using namespace std;
 #include <map>
 #include <list>
 #include <complex>
+
+//{ ************[     Test Report 1    ]************
 #include <tr1/regex>
 #include <tr1/unordered_set>
 #include <tr1/unordered_map>
+//}
 //}
 //{ ************[        Loops         ]************
 #define forab(i, a, b) for (__typeof(b) i = (a); i <= (b); ++i)

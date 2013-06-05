@@ -53,9 +53,9 @@ using namespace std;
 //{ ************[        Macros        ]************
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define min(a, b) ((a) < (b) ? (a) : (b))
-#define all(a) ((a).begin (), (a).end ())
 #define mem(a, i) memset ((a), i, sizeof ((a)))
 #define clr(a) mem ((a), 0)
+#define all(a) ((a).begin (), (a).end ())
 #define pb push_back
 //}
 //{ ************[  Typedefs && Consts  ]************
@@ -76,4 +76,3 @@ int main () {
 
 	return 0;
 }
-

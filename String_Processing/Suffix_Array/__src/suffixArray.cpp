@@ -13,9 +13,8 @@ bool isEqual (int u, int v) {
 }
 
 void update () {
-    int rnk = 0;
     for (int i = 0; i < N; ++i) sum [i] = 0;
-    for (int i = 0; i < N; ++i) {
+    for (int rnk = 0, i = 0; i < N; ++i) {
         SA [i] = tmp [i];
         if (i && !isEqual (SA [i], SA [i - 1])) {
             rank [stp][SA [i]] = ++rnk;

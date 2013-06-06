@@ -23,6 +23,9 @@ struct Int {
     bool  operator != (const Int &rhs) const { return x != rhs.x; }
     bool  operator == (const Int &rhs) const { return x == rhs.x; }
 
+    friend ostream &operator << (ostream &, Int &);
+    friend istream &operator >> (istream &, Int &);
+
     Int power (int64 n) const {
         if (!n) return get (1);
         const Int &a = *this;
@@ -32,3 +35,6 @@ struct Int {
 
     Int modInv () const { return power (MOD - 2); }
 };
+
+ostream &operator << (ostream &ostr, Int &temp) { ostr << temp.x; return ostr; }
+istream &operator >> (istream &istr, Int &temp) { istr >> temp.x; return istr; }

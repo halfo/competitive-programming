@@ -46,7 +46,7 @@ void Sort () {
     return;
 }
 
-void computeLCP () {
+void kasaiLCP () {
     for (int i = 0; i < N; ++i) c [SA [i]] = i;
     LCP [0] = 0;
     for (int i = 0, h = 0; i < N; ++i) if (c[i] > 0) {
@@ -70,5 +70,5 @@ void suffixArray () {
     }
     --stp;
     for (int i = 0; i <= stp; i++)  rank [i][N] = -1;
-    computeLCP();
+    kasaiLCP();
 }

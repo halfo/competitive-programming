@@ -16,12 +16,12 @@ struct Int {
     Int  &operator *= (const Int &rhs)       { return (*this) = *this * rhs; }
     Int  &operator /= (const Int &rhs)       { return (*this) = *this / rhs; }
 
-    bool  operator <   (const Int &rhs) const { return x < rhs.x; }
-    bool  operator >   (const Int &rhs) const { return x > rhs.x; }
-    bool  operator <=  (const Int &rhs) const { return x <= rhs.x; }
-    bool  operator >=  (const Int &rhs) const { return x >= rhs.x; }
-    bool  operator !=  (const Int &rhs) const { return x != rhs.x; }
-    bool  operator ==  (const Int &rhs) const { return x == rhs.x; }
+    bool  operator <  (const Int &rhs) const { return x < rhs.x; }
+    bool  operator >  (const Int &rhs) const { return x > rhs.x; }
+    bool  operator <= (const Int &rhs) const { return x <= rhs.x; }
+    bool  operator >= (const Int &rhs) const { return x >= rhs.x; }
+    bool  operator != (const Int &rhs) const { return x != rhs.x; }
+    bool  operator == (const Int &rhs) const { return x == rhs.x; }
 
     Int power (int64 n) const {
         if (!n) return get (1);

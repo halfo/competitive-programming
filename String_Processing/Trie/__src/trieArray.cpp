@@ -1,4 +1,5 @@
 // __init the data-structure in every case
+// keep next [] as less sized as possible, modify hash ()
 
 int tot;
 struct node {
@@ -11,7 +12,7 @@ struct node {
     }
 } state [MAX_N];
 
-inline int hash (char ch) { return 0; }
+inline int hash (char ch) { return -1; }
 void __init () { tot = 0; state [tot++] = node (); }
 
 void insert (char *str){

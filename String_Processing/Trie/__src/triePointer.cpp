@@ -22,10 +22,10 @@ void insert (char *str){
     cur -> endPos = true;
 }
 
-void travarse (node *cur) {
+void traverse (node *cur) {
     for (int i = 0; i < 128; ++i) {
         if (cur -> next [i] == NULL) continue;
-        travarse (cur -> next [i]);
+        traverse (cur -> next [i]);
         // delete cur -> next;
     }
 }

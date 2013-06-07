@@ -27,7 +27,6 @@ using namespace std;
 #include <map>
 #include <list>
 #include <complex>
-
 //{ ************[     Test Report 1    ]************
 #include <tr1/regex>
 #include <tr1/unordered_set>

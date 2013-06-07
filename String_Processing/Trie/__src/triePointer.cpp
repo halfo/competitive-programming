@@ -1,11 +1,11 @@
 // __init and delete the data-structure in every case
 
 struct node {
-    bool endPos;
+    int endPos;
     node *next [128];
 
     node () {
-        endPos = false;
+        endPos = 0;
         memset (next, 0, sizeof next);
     }
 } *root;
@@ -19,7 +19,7 @@ void insert (char *str){
             cur -> next [str [i]] = new node ();
         cur = cur -> next [str [i]];
     }
-    cur -> endPos = true;
+    ++cur -> endPos;
 }
 
 void traverse (node *cur) {

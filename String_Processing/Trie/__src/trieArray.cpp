@@ -2,11 +2,11 @@
 
 int tot;
 struct node {
-    bool endPos;
+    int endPos;
     int next [128];
 
     node () {
-        endPos = false;
+        endPos = 0;
         memset (next, -1, sizeof next);
     }
 } state [MAX_N]; // MAX_N should be 1 << 20 or around
@@ -22,7 +22,7 @@ void insert (char *str){
         }
         cur = state [cur].next [str [i]];
     }
-    state [cur].endPos = true;
+    ++state [cur].endPos;
 }
 
 void traverse (int cur) {

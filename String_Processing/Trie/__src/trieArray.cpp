@@ -11,8 +11,8 @@ struct node {
     }
 } state [MAX_N];
 
-void __init () { tot = 0; state [tot++] = node (); }
 inline int hash (char ch) { return 0; }
+void __init () { tot = 0; state [tot++] = node (); }
 
 void insert (char *str){
     int cur = 0;

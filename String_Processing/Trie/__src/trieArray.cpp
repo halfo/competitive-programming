@@ -3,24 +3,25 @@
 int tot;
 struct node {
     int endPos;
-    int next [128];
+    int next [];
 
     node () {
         endPos = 0;
         memset (next, -1, sizeof next);
     }
-} state [MAX_N]; // MAX_N should be 1 << 20 or around
+} state [MAX_N];
 
 void __init () { tot = 0; state [tot++] = node (); }
+inline int hash (char ch) { return 0; }
 
 void insert (char *str){
     int cur = 0;
     for (int i = 0; str [i]; ++i) {
-        if (state [cur].next [str [i]] == -1) {
+        if (state [cur].next [hash (str [i])] == -1) {
             state [tot] = node ();
-            state [cur].next [str [i]] = tot++;
+            state [cur].next [hash (str [i])] = tot++;
         }
-        cur = state [cur].next [str [i]];
+        cur = state [cur].next [hash (str [i])];
     }
     ++state [cur].endPos;
 }

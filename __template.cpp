@@ -54,7 +54,7 @@ using namespace std;
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define mem(a, i) memset ((a), i, sizeof ((a)))
 #define clr(a) mem ((a), 0)
-#define all(a) ((a).begin (), (a).end ())
+#define all(a) (a).begin (), (a).end ()
 #define pb push_back
 //}
 //{ ************[  Typedefs && Consts  ]************

@@ -50,12 +50,13 @@ using namespace std;
 #define PI 2 * acos (0.0)
 //}
 //{ ************[        Macros        ]************
-#define max(a, b) ((a) > (b) ? (a) : (b))
-#define min(a, b) ((a) < (b) ? (a) : (b))
 #define mem(a, i) memset ((a), i, sizeof ((a)))
 #define clr(a) mem ((a), 0)
 #define all(a) (a).begin (), (a).end ()
 #define pb push_back
+
+template <class T> T max (T &a, T &b) { return a > b ? a : b; }
+template <class T> T min (T &a, T &b) { return a < b ? a : b; }
 //}
 //{ ************[  Typedefs && Consts  ]************
 typedef long long int64;

@@ -12,8 +12,8 @@ struct RMQ {
         int res = INT_MAX;
         if (L > R) swap (L, R);
         for (L += Leaf, R += Leaf + 1; L < R; L >>= 1, R >>= 1) {
-            if ((L & 1)) res = min (res, st[L]), L++;
-            if ((R & 1)) --R, res = min (res, st[R]);
+            if ((L & 1)) res = min (res, st [L++]);
+            if ((R & 1)) res = min (res, st [--R]);
         }
         return res;
     }

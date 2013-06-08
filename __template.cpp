@@ -55,8 +55,8 @@ using namespace std;
 #define all(a) (a).begin (), (a).end ()
 #define pb push_back
 
-template <class T> T max (T &a, T &b) { return a > b ? a : b; }
-template <class T> T min (T &a, T &b) { return a < b ? a : b; }
+template <class T, class U> inline T max (T &a, U &b) { return a > b ? a : b; }
+template <class T, class U> inline T min (T &a, U &b) { return a < b ? a : b; }
 //}
 //{ ************[  Typedefs && Consts  ]************
 typedef long long int64;

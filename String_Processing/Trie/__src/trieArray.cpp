@@ -27,9 +27,9 @@ void insert (char *str){
     ++state [cur].endPos;
 }
 
-void traverse (int cur) {
+void dfs (int cur) {
     for (int i = 0; i < 128; ++i) {
         if (state [cur].next [i] == -1) continue;
-        traverse (state [cur].next [i]);
+        dfs (state [cur].next [i]);
     }
 }

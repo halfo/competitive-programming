@@ -1,4 +1,5 @@
 // __init and delete the data-structure in every case
+// its always better to use array version of trie
 
 struct node {
     int endPos;
@@ -22,10 +23,10 @@ void insert (char *str){
     ++cur -> endPos;
 }
 
-void traverse (node *cur) {
+void dfs (node *cur) {
     for (int i = 0; i < 128; ++i) {
         if (cur -> next [i] == NULL) continue;
-        traverse (cur -> next [i]);
+        dfs (cur -> next [i]);
         // delete cur -> next;
     }
 }

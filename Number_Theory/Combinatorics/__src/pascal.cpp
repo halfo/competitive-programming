@@ -1,4 +1,4 @@
-int64U nCr [MAX_N][MAX_N];
+int64u nCr [MAX_N][MAX_N];
 
 void pascal () {
     for (int i = 0; i < MAX_N; ++i) {

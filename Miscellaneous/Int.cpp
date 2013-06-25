@@ -1,3 +1,4 @@
+// "Int variable ()" declaration doesn't support
 struct Int {
     int64 x;
     Int (int x) : x (int64 (x) % MOD) { if (x < 0LL) x += MOD; }
@@ -23,8 +24,8 @@ struct Int {
     bool  operator != (const Int &rhs) const { return x != rhs.x; }
     bool  operator == (const Int &rhs) const { return x == rhs.x; }
 
-    friend ostream &operator << (ostream &ostr, Int &temp) { ostr << temp.x; return ostr; }
     friend istream &operator >> (istream &istr, Int &temp) { istr >> temp.x; return istr; }
+    friend ostream &operator << (ostream &ostr, Int &temp) { ostr << temp.x; return ostr; }
 
     Int power (int64 n) const {
         if (!n) return get (1);

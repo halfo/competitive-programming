@@ -13,12 +13,12 @@ template <int Odr> struct matrix {
             for (int j = 0; j < Odr; ++j) M [i][j] = 1LL;
     }
 
-    matrix <Odr> operator * (const matrix <Odr> &mul) const {
+    matrix <Odr> operator * (const matrix <Odr> &rhs) const {
         matrix <Odr> temp;
         for (int i = 0; i < Odr; ++i)
             for (int j = 0; j < Odr; ++j)
                 for (int k = 0; k < Odr; ++k)
-                    temp.M [i][j] += (M [i][k] * mul.M [k][j]);
+                    temp.M [i][j] += (M [i][k] * rhs.M [k][j]);
         return temp;
     }
 

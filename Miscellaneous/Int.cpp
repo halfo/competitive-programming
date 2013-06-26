@@ -1,4 +1,4 @@
-// "Int variable ()" declaration doesn't support
+// "Int variable ()" declaration isn't supported
 struct Int {
     int64 x;
     Int (int x) : x (int64 (x) % MOD) { if (x < 0LL) x += MOD; }

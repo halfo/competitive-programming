@@ -1,3 +1,5 @@
+// fromat :: func = base * func (still don't know why)
+
 template <int Odr> struct matrix {
     int64 M [Odr][Odr];
 

@@ -3,7 +3,7 @@ int st [MAX_N << 2];
 struct RMQ {
     int Leaf;
     RMQ () {
-        Leaf = N > 0 ? pow (2, ceil (log10 (N) * 3.3219280946)) : 0;
+        Leaf = 1 << (31 - __builtin_clz (N - 1) + 1);
         for (int i = 0; i < Leaf; ++i) st [Leaf + i] = i < N ? LCP [i] : INT_MAX;
         for (int i = Leaf - 1; i > 0; --i) st [i] = min (st [i << 1], st [i << 1 | 1]);
     }

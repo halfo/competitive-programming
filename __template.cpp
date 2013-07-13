@@ -69,7 +69,7 @@ const int MOD   = int (1e9) + 7;
 
 int main () {
 	cin.sync_with_stdio (false);
-#ifdef IOfromFile
+#ifdef Local
 	freopen ("input.txt", "r", stdin);
 	// freopen ("output.txt", "w", stdout);
 #endif

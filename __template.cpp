@@ -57,6 +57,7 @@ using namespace std;
 
 template <class T, class U> inline T max (T &a, U &b) { return a > b ? a : b; }
 template <class T, class U> inline T min (T &a, U &b) { return a < b ? a : b; }
+static struct _ { ios_base :: Init Init; _ () { cin.sync_with_stdio (false); cin.tie (false); } } _;
 //}
 //{ ************[  Typedefs && Consts  ]************
 typedef long long int64;
@@ -68,7 +69,6 @@ const int MOD   = int (1e9) + 7;
 //}
 
 int main () {
-	cin.sync_with_stdio (false);
 #ifdef Local
 	freopen ("input.txt", "r", stdin);
 	// freopen ("output.txt", "w", stdout);

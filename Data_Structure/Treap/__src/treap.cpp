@@ -61,10 +61,10 @@ class treap {
     	return countEqual (key < temp -> key ? temp -> le : temp -> ri, key);
     }
 
-    pNode getKth (pNode temp, const int K) {
-        if (!temp or K >= count (temp)) return 0;
-        if (K == count (temp -> le)) return temp;
-        return K < count (temp -> le) ? getKth (temp -> le, K) : getKth (temp -> ri, K - (count (temp -> le) + 1));
+    pNode kThElement (pNode temp, const int kTh) {
+        if (!temp or kTh >= count (temp)) return 0;
+        if (kTh == count (temp -> le)) return temp;
+        return kTh < count (temp -> le) ? kThElement (temp -> le, kTh) : kThElement (temp -> ri, kTh - (count (temp -> le) + 1));
     }
 
 public:
@@ -74,5 +74,5 @@ public:
 	void insert (int64 key, int64 rnk = rand ()) { insert (root, new node (key, rnk)); }
 	void insert_unique (int64 key, int64 rnk = rand ()) { if (!countEqual (root, key)) insert (root, new node (key, rnk)); }
 	void erase (int64 key, int64 rnk = -1) { erase (root, key, rnk); }
-	int64 operator [] (const int idx) { pNode temp = getKth (root, idx); return temp ? temp -> key : LLONG_MIN; }
+	int64 operator [] (const int idx) { pNode temp = kThElement (root, idx); return temp ? temp -> key : LLONG_MIN; }
 };

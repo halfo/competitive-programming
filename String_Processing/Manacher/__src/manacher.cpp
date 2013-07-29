@@ -3,7 +3,7 @@ int  pal [MAX_N << 1];
 
 int preProcess () {
     int len = 2;
-    modStrcpy (modStr, "^#");
+    strcpy (modStr, "^#");
 
     for (int i = 0; str [i]; i++) {
         modStr [len++] = str [i];

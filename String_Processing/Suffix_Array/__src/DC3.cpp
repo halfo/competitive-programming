@@ -12,6 +12,7 @@ void Sort () {
 }
 
 void DA () {
+    ++N;
     for (int i = 0; i < N; ++i) x [i] = str [i], y[i] = i;
     Sort ();
     for (int i, j = 1, p = 1; p < N; j <<= 1, m = p) {
@@ -20,6 +21,7 @@ void DA () {
         Sort ();
         for (swap (x, y), p = 1, x [SA [0]] = 0, i = 1; i < N; ++i) x [SA [i]] = cmp (SA [i - 1], SA [i], j) ? p - 1 : p++;
     }
+    for (int i = 1; i < N; ++i) SA [i - 1] = SA [i]; --N;
 }
 
 void kasaiLCP () {

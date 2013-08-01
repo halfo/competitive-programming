@@ -9,70 +9,77 @@ class treap {
 	typedef node* pNode;
 	pNode root;
 
-    int64 count (pNode temp) { return temp ? temp -> cnt : 0; }
-    void updateCnt (pNode temp) { if (temp) temp -> cnt = 1 + count (temp -> le) + count (temp -> ri); }
+    int64 count (pNode cur) { return cur ? cur -> cnt : 0; }
+    void updateCnt (pNode cur) { if (cur) cur -> cnt = 1 + count (cur -> le) + count (cur -> ri); }
 
-	void split (pNode temp, pNode &le, pNode &ri, int64 key) {
-		if (!temp) { le = ri = 0; return; }
-        if (key < temp -> key ) split (temp -> le, le, temp -> le, key), ri = temp;
-        else split (temp -> ri, temp -> ri, ri, key), le = temp;
-        updateCnt (temp);
+	void split (pNode cur, pNode &le, pNode &ri, int64 key) {
+		if (!cur) { le = ri = 0; return; }
+        if (key < cur -> key ) split (cur -> le, le, cur -> le, key), ri = cur;
+        else split (cur -> ri, cur -> ri, ri, key), le = cur;
+        updateCnt (cur);
     }
 
-    void merge (pNode &temp, pNode le, pNode ri) {
-        if (!le || !ri) temp = le ? le : ri;
-        else if (le -> rnk > ri -> rnk) merge (le -> ri, le -> ri, ri), temp = le;
-        else merge (ri -> le, le, ri -> le), temp = ri;
-        updateCnt (temp);
+    void merge (pNode &cur, pNode le, pNode ri) {
+        if (!le || !ri) cur = le ? le : ri;
+        else if (le -> rnk > ri -> rnk) merge (le -> ri, le -> ri, ri), cur = le;
+        else merge (ri -> le, le, ri -> le), cur = ri;
+        updateCnt (cur);
     }
 
-    void insert (pNode &temp, pNode it) {
-        if (!temp) temp = it;
-        else if (it -> rnk > temp -> rnk) split (temp, it -> le, it -> ri, it -> key), temp = it;
-        else insert ((it -> key < temp -> key) ? temp -> le : temp -> ri, it);
-        updateCnt (temp);
+    void insert (pNode &cur, pNode it) {
+        if (!cur) cur = it;
+        else if (it -> rnk > cur -> rnk) split (cur, it -> le, it -> ri, it -> key), cur = it;
+        else insert ((it -> key < cur -> key) ? cur -> le : cur -> ri, it);
+        updateCnt (cur);
     }
 
-    void erase (pNode &temp, int64 key, int64 rnk) {
-        if (!temp) return;
-        if (temp -> key == key) {
-        	if (rnk == -1) rnk = temp -> rnk;
-        	if (rnk == temp -> rnk) merge (temp, temp -> le, temp -> ri);
-        	else erase (temp -> ri, key, rnk);
-        } else erase ((key < temp -> key) ? temp -> le : temp -> ri, key, rnk);
-        updateCnt (temp);
+    void erase (pNode &cur, int64 key, int64 rnk) {
+        if (!cur) return;
+        if (cur -> key == key) {
+        	if (rnk == -1) rnk = cur -> rnk;
+        	if (rnk == cur -> rnk) merge (cur, cur -> le, cur -> ri);
+        	else erase (cur -> ri, key, rnk);
+        } else erase ((key < cur -> key) ? cur -> le : cur -> ri, key, rnk);
+        updateCnt (cur);
     }
 
-    int64 countLess (pNode temp, int64 key) {
-        if (!temp) return 0;
-        if (key <= temp -> key) return countLess (temp -> le, key);
-        return 1 + count (temp -> le) + countLess (temp -> ri, key);
+    int64 countLess (pNode cur, int64 key) {
+        if (!cur) return 0;
+        if (key <= cur -> key) return countLess (cur -> le, key);
+        return 1 + count (cur -> le) + countLess (cur -> ri, key);
     }
 
-    int64 countLessEqual (pNode temp, int64 key) {
-        if (!temp) return 0;
-        if (key < temp -> key) return countLessEqual (temp -> le, key);
-        return 1 + count (temp -> le) + countLess (temp -> ri, key);
+    int64 countLessEqual (pNode cur, int64 key) {
+        if (!cur) return 0;
+        if (key < cur -> key) return countLessEqual (cur -> le, key);
+        return 1 + count (cur -> le) + countLess (cur -> ri, key);
     }
 
-    int64 countEqual (pNode temp, int64 key) {
-    	if (!temp) return 0;
-    	if (key == temp -> key) return 1 + countEqual (temp -> ri, key);
-    	return countEqual (key < temp -> key ? temp -> le : temp -> ri, key);
+    int64 countEqual (pNode cur, int64 key) {
+    	if (!cur) return 0;
+    	if (key == cur -> key) return 1 + countEqual (cur -> ri, key);
+    	return countEqual (key < cur -> key ? cur -> le : cur -> ri, key);
     }
 
-    pNode kThElement (pNode temp, const int kTh) {
-        if (!temp or kTh >= count (temp)) return 0;
-        if (kTh == count (temp -> le)) return temp;
-        return kTh < count (temp -> le) ? kThElement (temp -> le, kTh) : kThElement (temp -> ri, kTh - (count (temp -> le) + 1));
+    pNode kThElement (pNode cur, const int kTh) {
+        if (!cur or kTh >= count (cur)) return 0;
+        if (kTh == count (cur -> le)) return cur;
+        return kTh < count (cur -> le) ? kThElement (cur -> le, kTh) : kThElement (cur -> ri, kTh - (count (cur -> le) + 1));
+    }
+
+    void clear (pNode cur) {
+        if (cur -> le) free (cur -> le);
+        if (cur -> ri) free (cur -> ri);
+        free (cur);
     }
 
 public:
 	treap () { root = 0; srand (time (0)); }
 	int64 size () { return count (root); }
+    void clear () { clear (root); root = 0; }
 	bool find (int64 key) { return countEqual (root, key) ? true : false; }
 	void insert (int64 key, int64 rnk = rand ()) { insert (root, new node (key, rnk)); }
 	void insert_unique (int64 key, int64 rnk = rand ()) { if (!countEqual (root, key)) insert (root, new node (key, rnk)); }
 	void erase (int64 key, int64 rnk = -1) { erase (root, key, rnk); }
-	int64 operator [] (const int idx) { pNode temp = kThElement (root, idx); return temp ? temp -> key : LLONG_MIN; }
+	int64 operator [] (const int idx) { pNode cur = kThElement (root, idx); return cur ? cur -> key : LLONG_MIN; }
 };

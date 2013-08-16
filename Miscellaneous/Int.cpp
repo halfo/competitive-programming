@@ -1,4 +1,3 @@
-// "Int variable ()" declaration isn't supported
 struct Int {
     int64 x;
     Int (int _x) : x (int64 (_x) % MOD) { if (x < 0LL) x += MOD; }
@@ -16,13 +15,6 @@ struct Int {
     Int  &operator -= (const Int &rhs)       { return (*this) = *this - rhs; }
     Int  &operator *= (const Int &rhs)       { return (*this) = *this * rhs; }
     Int  &operator /= (const Int &rhs)       { return (*this) = *this / rhs; }
-
-    bool  operator <  (const Int &rhs) const { return x <  rhs.x; }
-    bool  operator >  (const Int &rhs) const { return x >  rhs.x; }
-    bool  operator <= (const Int &rhs) const { return x <= rhs.x; }
-    bool  operator >= (const Int &rhs) const { return x >= rhs.x; }
-    bool  operator != (const Int &rhs) const { return x != rhs.x; }
-    bool  operator == (const Int &rhs) const { return x == rhs.x; }
 
     friend istream &operator >> (istream &istr, Int &temp) { istr >> temp.x; return istr; }
     friend ostream &operator << (ostream &ostr, Int &temp) { ostr << temp.x; return ostr; }

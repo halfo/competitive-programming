@@ -1,8 +1,8 @@
 // "Int variable ()" declaration isn't supported
 struct Int {
     int64 x;
-    Int (int x) : x (int64 (x) % MOD) { if (x < 0LL) x += MOD; }
-    Int (int64 x = 0LL) : x (x % MOD) { if (x < 0LL) x += MOD; }
+    Int (int _x) : x (int64 (_x) % MOD) { if (x < 0LL) x += MOD; }
+    Int (int64 _x = 0LL) : x (_x % MOD) { if (x < 0LL) x += MOD; }
 
     static Int get (int x)   { Int temp (x); return temp; }
     static Int get (int64 x) { Int temp (x); return temp; }

@@ -2,7 +2,7 @@ struct node {
 	int64 key, rnk, cnt;
 	node *le, *ri;
 
-	node (int64 key = 0, int64 rnk = rand ()) : key (key), rnk (rnk), cnt (1), le (0), ri (0) {}
+	node (int64 _key = 0, int64 _rnk = rand ()) : key (_key), rnk (_rnk), cnt (1), le (0), ri (0) {}
 };
 
 class treap {

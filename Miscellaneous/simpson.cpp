@@ -5,7 +5,7 @@ double simpson (double a, double b) {
     double h   = (b - a) / N;
 
     for (int i = 0; i <= N; ++i) {
-        static double x = a + h * i;
+        double x = a + h * i;
         ret += F (x) * ((i == 0 || i == N) ? 1 : (i & 1) ? 4 : 2);
     }
     return ret;

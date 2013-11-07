@@ -2,15 +2,15 @@ bool seen [MAX_N];
 int nV, cur, nCycle;
 vector <int> stk, adjList [MAX_N], tempList [MAX_N];
 
-inline bool inList (vector <int> &uList, int v) { forstl (it, uList) if (*it == v) return true; return false; }
-bool notSeen (int u) { seen [u] = false; forstl (v, tempList [u]) if (seen [*v]) notSeen (*v); tempList [u].clear (); }
+inline bool inList (vector <int> &uList, int v) { foreach (it, uList) if (*it == v) return true; return false; }
+bool notSeen (int u) { seen [u] = false; foreach (v, tempList [u]) if (seen [*v]) notSeen (*v); tempList [u].clear (); }
 
 bool calCycle (int u) {
 	bool isCycle = false;
 	seen [u] = true;
 	stk.push_back (u);
 
-	forstl (v, adjList [u]) {
+	foreach (v, adjList [u]) {
 		if (*v < cur) continue;
 		if (*v == cur) {
 			// print or copy the nodes of cycle, length histogram, longest cycle, vertex popularity
@@ -19,7 +19,7 @@ bool calCycle (int u) {
 	}
 
 	if (isCycle) notSeen (u);
-	else forstl (v, adjList [u]) {
+	else foreach (v, adjList [u]) {
 		if (*v < cur) continue;
 		if (!inList (tempList [*v], u)) tempList [*v].push_back (u);
 	}

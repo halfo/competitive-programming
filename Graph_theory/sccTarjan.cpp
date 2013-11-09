@@ -31,6 +31,6 @@ void dfs (int u) {
 // nodes are indexed from 0
 void scc () {
     nCompStack = dfsnext = 0;
-    rep (i, n) dfsn [p [i] = i] = inCompStack [i] = 0;
-    rep (i, n) if (!dfsn [i]) dfs (i);
+    for (int i = 0; i < n; ++i) dfsn [p [i] = i] = inCompStack [i] = 0;
+    for (int i = 0; i < n; ++i) if (!dfsn [i]) dfs (i);
 }

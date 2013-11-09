@@ -20,7 +20,7 @@ int bpm () {
     rst (lhs); rst (rhs);
     do {
         clr (seen); match = false;
-        rep (i, n) if (lhs [i] == -1 && kuhn (i)) ans += (match = 1);
+        for (int i = 0; i < n; ++i) if (lhs [i] == -1 && kuhn (i)) ans += (match = 1);
     } while (match);
     return ans;
 }

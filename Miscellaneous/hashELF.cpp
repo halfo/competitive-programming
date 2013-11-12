@@ -1,4 +1,4 @@
-size_t hashELF (string key) {
+size_t hashELF (const string &key) {
     size_t g, h = 0;
     for (size_t i = 0; key [i]; ++i) {
         h = (h << 4) + key [i];

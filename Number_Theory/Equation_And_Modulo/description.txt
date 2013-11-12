@@ -1,0 +1,14 @@
+  format                known       method
+  ------                -----       ------
+
+* ax + by = 1          (a, b)    -> modular inverse, solved using extended euclid
+                                    (a and b has to be co-prime)
+* ax + by = gcd (a, b) (a, b)    -> extended euclid, O (log n)
+                                    (returns d = gcd (a, b) along with x and y)
+* ax = b (mod n)       (a, b, n) -> modular linear equation of the first order, solved using extended euclid
+                                    (number of solution is either gcd (a, n) or zero)
+* ax + by = c          (a, b, c) -> linear Diophantine equations in two variables, O (log n)
+                                    (returns x, many solution may exist, here a and m co-prime)
+* a ^ x = b (mod m)    (a, b, m) -> shank's baby-step giant-step, O (sqrt (m) * log m) but in practice O (sqrt (m))
+                                    (returns all x, here a and m co-prime)
+* n! mod p(rime)       (n, p)    -> factor modulo, O (p log (p base) n)                                    

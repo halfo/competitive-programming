@@ -1,4 +1,4 @@
-// user defiend hash function for unordered_set and unordered_map
+// user defined hash function for unordered_set and unordered_map
 // to avoid collision, use another hash function along with this one
 
 struct elfHash {

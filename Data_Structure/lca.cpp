@@ -6,7 +6,7 @@ void init_lca() { RST(SP); }
 
 void build_lca(int u, int parent) {
     SP[0][u] = parent;
-    REP(i, LOG_MAX)
+    FOR(i, LOG_MAX - 1)
         parent = SP[i][u] = SP[i - 1][parent];
 }
 

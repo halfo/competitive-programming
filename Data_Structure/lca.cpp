@@ -4,6 +4,7 @@ int SP[LOG_MAX][MAX_N];
 
 void init_lca() { RST(SP); }
 
+// Run it over topological order
 void build_lca(int u, int parent) {
     SP[0][u] = parent;
     FOR(i, LOG_MAX - 1)
@@ -16,7 +17,7 @@ int get_lca(int u, int v) {
     PER(i, LOG_MAX) {
         int pu = SP[i][u];
         if (pu == -1 || depth[pu] < depth[v]) continue;
-        u = SP[i][u];
+        u = pu;
     }
 
     if (u == v) return u;
